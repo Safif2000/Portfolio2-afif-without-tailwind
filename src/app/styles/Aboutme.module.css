@@ -1,0 +1,147 @@
+/* About Section */
+.aboutSection {
+    background-color: #292524;
+    padding: 3rem 0;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Profile & Skills Section */
+  .profileSection {
+    width: 100%;
+    padding: 1rem;
+  }
+  @media (min-width: 768px) {
+    .profileSection {
+      width: 50%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .profileSection {
+      width: 40%;
+    }
+  }
+  
+  .profileCard {
+    background-color: #201d1b;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+  }
+  .profileImage {
+    border-radius: 0.5rem;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+  .profileDetails {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+  .fontSemibold {
+    font-weight: 600;
+  }
+  
+  /* Skills Section */
+  .skills {
+    margin-top: 1.5rem;
+  }
+  .skillsTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .skillItem {
+    margin-bottom: 0.75rem;
+  }
+  .skillLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+  .skillBarBackground {
+    width: 100%;
+    background-color: #4a5568;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .skillBar {
+    background-color: #f59e0b;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    width: 0%;
+  }
+  
+  /* About Me Section */
+  .aboutMeSection {
+    width: 100%;
+    padding: 1rem;
+    margin: 1
+    ;
+  }
+  @media (min-width: 768px) {
+    .aboutMeSection {
+      width: 50%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .aboutMeSection {
+      width: 50%;
+    }
+  }
+  .aboutMeContent {
+    color: #ffffff;
+  }
+  .heading {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d1d5db;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .headingOverlay {
+    position: absolute;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+  }
+  .aboutMeText {
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+  }
+  .profileList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .projectsSection {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .projectsCompleted {
+    font-weight: bold;
+    color: #f59e0b;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+  }
+  .linkedinButton {
+    background-color: #f59e0b;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-align: center;
+    transition: transform 0.3s;
+    text-decoration: none;
+  }
+  .linkedinButton:hover {
+    transform: scale(1.05);
+  }
+  

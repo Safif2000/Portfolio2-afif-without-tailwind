@@ -1,109 +1,111 @@
-"use client"; // Ensures this component runs only on the client side
-
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import styles from '../app/styles/navbar.module.css'; // Correct relative path
 
 const Navbar = () => {
-  // State to handle the visibility of the mobile menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.getElementById("navbar");
-
       if (navbar) {
         if (window.scrollY > 100) {
-          // Add black background and shadow when scrolled down
-          navbar.classList.add("bg-black", "shadow-lg", "sticky", "top-0");
-          navbar.classList.remove("bg-transparent");
+          navbar.classList.add(styles.stickyNavbar);  // Use styles object
+          navbar.classList.remove(styles.bgTransparent);
         } else {
-          // Remove black background and shadow when at the top
-          navbar.classList.add("bg-transparent");
-          navbar.classList.remove("bg-black", "shadow-lg", "sticky", "top-0");
+          navbar.classList.add(styles.bgTransparent);
+          navbar.classList.remove(styles.stickyNavbar);
         }
       }
     };
 
-    // Add scroll event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Empty dependency array ensures this effect runs only once
+  }, []);
 
-  // Smooth scroll function
   const handleScrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
-        behavior: 'smooth', // Smooth scrolling effect
-        block: 'start', // Scroll to the top of the element
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
 
   return (
-    <nav id="navbar" className="bg-transparent absolute top-0 left-0 right-0 z-30 transition-all duration-300 ease-in-out">
-      <div className="container mx-auto flex items-center justify-between px-4 py-5">
+    <nav id="navbar" className={styles.navbar}>  {/* Apply CSS module classes here */}
+      <div className={styles.navbarContainer}>
         <a
-          className="font-bold text-xl text-white"
+          className={styles.navbarLogo}
           href="#home-section"
           onClick={(e) => {
-            e.preventDefault(); // Prevent default anchor behavior
-            handleScrollToSection('home-section');
+            e.preventDefault();
+            handleScrollToSection("home-section");
           }}
         >
           S.M AFIF
         </a>
 
         {/* Hamburger icon for mobile */}
-        <div className="lg:hidden flex items-center" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <button className="text-white focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        <div
+          className={styles.hamburgerContainer}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <button className={styles.hamburgerBtn}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={styles.hamburgerIcon}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
             </svg>
           </button>
         </div>
 
         {/* Desktop Navbar links */}
-        <div className="hidden lg:flex items-center space-x-4">
+        <div className={styles.desktopMenu}>
           <a
             href="#home-section"
-            className="text-white hover:text-yellow-400 transition"
             onClick={(e) => {
               e.preventDefault();
-              handleScrollToSection('home-section');
+              handleScrollToSection("home-section");
             }}
           >
             Home
           </a>
           <a
             href="#about-section"
-            className="text-white hover:text-yellow-400 transition"
             onClick={(e) => {
               e.preventDefault();
-              handleScrollToSection('about-section');
+              handleScrollToSection("about-section");
             }}
           >
             About
           </a>
           <a
             href="#project-section"
-            className="text-white hover:text-yellow-400 transition"
             onClick={(e) => {
               e.preventDefault();
-              handleScrollToSection('project-section');
+              handleScrollToSection("project-section");
             }}
           >
             Projects
           </a>
           <a
             href="#contact-section"
-            className="text-white hover:text-yellow-400 transition"
             onClick={(e) => {
               e.preventDefault();
-              handleScrollToSection('contact-section');
+              handleScrollToSection("contact-section");
             }}
           >
             Contact
@@ -111,44 +113,46 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu - only displayed when 'isMenuOpen' is true */}
-      <div className={`lg:hidden ${isMenuOpen ? "block" : "hidden"} bg-black text-white p-4`}>
+      {/* Mobile Menu */}
+      <div
+        className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ""}`}
+      >
         <a
           href="#home-section"
-          className="block py-2 text-lg hover:text-yellow-400"
+          className={styles.mobileMenuLink}
           onClick={(e) => {
             e.preventDefault();
-            handleScrollToSection('home-section');
+            handleScrollToSection("home-section");
           }}
         >
           Home
         </a>
         <a
           href="#about-section"
-          className="block py-2 text-lg hover:text-yellow-400"
+          className={styles.mobileMenuLink}
           onClick={(e) => {
             e.preventDefault();
-            handleScrollToSection('about-section');
+            handleScrollToSection("about-section");
           }}
         >
           About
         </a>
         <a
           href="#project-section"
-          className="block py-2 text-lg hover:text-yellow-400"
+          className={styles.mobileMenuLink}
           onClick={(e) => {
             e.preventDefault();
-            handleScrollToSection('project-section');
+            handleScrollToSection("project-section");
           }}
         >
           Projects
         </a>
         <a
           href="#contact-section"
-          className="block py-2 text-lg hover:text-yellow-400"
+          className={styles.mobileMenuLink}
           onClick={(e) => {
             e.preventDefault();
-            handleScrollToSection('contact-section');
+            handleScrollToSection("contact-section");
           }}
         >
           Contact

@@ -1,0 +1,143 @@
+/* navbar.module.css */
+
+/* Navbar Styling */
+.navbar {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbarLogo {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .hamburgerContainer {
+    display: none;
+  }
+  
+  .hamburgerBtn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .hamburgerIcon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .desktopMenu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .desktopMenu a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .desktopMenu a:hover {
+    color: yellow;
+  }
+  
+  .mobileMenu {
+    display: none;
+    background-color: black;
+    color: white;
+    padding: 10px;
+  }
+  
+  .mobileMenu.open {
+    display: block;
+  }
+  
+  .mobileMenu a {
+    display: block;
+    padding: 10px 0;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .mobileMenu a:hover {
+    color: yellow;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .hamburgerContainer {
+      display: flex;
+    }
+  
+    .desktopMenu {
+      display: none;
+    }
+  
+    /* Adjust Mobile Menu */
+    .mobileMenu {
+      display: none;
+      position: absolute;
+      top: 60px; /* Adjust for navbar height */
+      left: 0;
+      right: 0;
+      z-index: 20;
+      background-color: black;
+    }
+  
+    .mobileMenu a {
+      padding: 15px 20px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  
+    /* Adjust Navbar Styling for Mobile */
+    .navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbarLogo {
+      font-size: 1.1rem;
+    }
+  
+    .desktopMenu a {
+      font-size: 0.9rem;
+    }
+  
+    .mobileMenu a {
+      font-size: 1rem;
+    }
+  }
+  
+  .stickyNavbar {
+    background-color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+  }
+  
+  .bgTransparent {
+    background-color: transparent;
+  }
+  
