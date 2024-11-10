@@ -25,8 +25,9 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleScrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+  const handleScrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId) as HTMLElement | null; // Type assertion to HTMLElement
+  
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
@@ -34,6 +35,7 @@ const Navbar = () => {
       });
     }
   };
+  
 
   return (
     <nav id="navbar" className={styles.navbar}>  {/* Apply CSS module classes here */}

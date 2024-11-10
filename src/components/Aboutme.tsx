@@ -35,25 +35,7 @@ const AboutMe = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWordIndex, typingTexts]); // Fixed dependency array
 
-  // useEffect(() => {
-  //   const animateSkillProgress = () => {
-  //     const progressBars = document.querySelectorAll('.progress-bar');
-  //     progressBars.forEach((bar) => {
-  //       const target = bar.dataset.level;
-  //       let progress = 0;
-  //       const interval = setInterval(() => {
-  //         if (progress < target) {
-  //           progress += 1;
-  //           bar.style.width = `${progress}%`;
-  //         } else {
-  //           clearInterval(interval);
-  //         }
-  //       }, 10);
-  //     });
-  //   };
 
-  //   animateSkillProgress();
-  // }, []);
 
   useEffect(() => {
     const animateSkillProgress = () => {
