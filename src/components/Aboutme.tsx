@@ -9,7 +9,7 @@ const AboutMe = () => {
   const typingTexts = ['Web Developer', 'Student'];
 
   const [projectsCompleted, setProjectsCompleted] = useState(0);
-  const [skills, setSkills] = useState([
+  const [skills] = useState([
     { name: 'Next.js', level: 95 },
     { name: 'TypeScript', level: 85 },
     { name: 'Bootstrap', level: 90 },
@@ -32,6 +32,7 @@ const AboutMe = () => {
     }, 200);
 
     return () => clearInterval(typingInterval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typingText, currentWordIndex]);
 
   useEffect(() => {
