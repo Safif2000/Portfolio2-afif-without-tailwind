@@ -6,7 +6,7 @@ import styles from '../app/styles/Aboutme.module.css';
 const AboutMe = () => {
   const [typingText, setTypingText] = useState('');
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const typingTexts = ['Web Developer', 'Student'];
+  const typingTexts = ['Web Developer', 'Student']; // Fixed missing dependency in useEffect
 
   const [projectsCompleted, setProjectsCompleted] = useState(0);
   const [skills] = useState([
@@ -33,28 +33,50 @@ const AboutMe = () => {
 
     return () => clearInterval(typingInterval);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [typingText, currentWordIndex]);
+  }, [currentWordIndex, typingTexts]); // Fixed dependency array
+
+  // useEffect(() => {
+  //   const animateSkillProgress = () => {
+  //     const progressBars = document.querySelectorAll('.progress-bar');
+  //     progressBars.forEach((bar) => {
+  //       const target = bar.dataset.level;
+  //       let progress = 0;
+  //       const interval = setInterval(() => {
+  //         if (progress < target) {
+  //           progress += 1;
+  //           bar.style.width = `${progress}%`;
+  //         } else {
+  //           clearInterval(interval);
+  //         }
+  //       }, 10);
+  //     });
+  //   };
+
+  //   animateSkillProgress();
+  // }, []);
 
   useEffect(() => {
     const animateSkillProgress = () => {
       const progressBars = document.querySelectorAll('.progress-bar');
       progressBars.forEach((bar) => {
-        const target = bar.dataset.level;
-        let progress = 0;
-        const interval = setInterval(() => {
-          if (progress < target) {
-            progress += 1;
-            bar.style.width = `${progress}%`;
-          } else {
-            clearInterval(interval);
-          }
-        }, 10);
+        if (bar instanceof HTMLElement) {
+          const target = parseInt(bar.dataset.level || '0', 10);
+          let progress = 0;
+          const interval = setInterval(() => {
+            if (progress < target) {
+              progress += 1;
+              bar.style.width = `${progress}%`;
+            } else {
+              clearInterval(interval);
+            }
+          }, 10);
+        }
       });
     };
-
+  
     animateSkillProgress();
   }, []);
-
+  
   useEffect(() => {
     const targetProjects = 45;
     let count = 0;

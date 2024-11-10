@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles1 from '../app/styles/Herosection.module.css'; // Import custom CSS
+import styles1 from '../app/styles/Herosection.module.css';
 
 const Herosection = () => {
   const [typingText, setTypingText] = useState('');
@@ -10,20 +10,18 @@ const Herosection = () => {
     const currentText = typingTexts[currentWordIndex];
     const typingInterval = setInterval(() => {
       if (typingText.length < currentText.length) {
-        // Continue typing the current word
         setTypingText((prev) => prev + currentText[typingText.length]);
       } else {
-        // Once the current word is fully typed, move to the next one
         clearInterval(typingInterval);
         setTimeout(() => {
-          setTypingText(''); // Clear the text after a short delay
-          setCurrentWordIndex((prev) => (prev + 1) % typingTexts.length); // Move to the next word
-        }, 1000); // Pause after finishing typing before moving to the next word
+          setTypingText('');
+          setCurrentWordIndex((prev) => (prev + 1) % typingTexts.length);
+        }, 1000);
       }
-    }, 200); // Adjust typing speed here (200ms)
+    }, 200);
 
-    return () => clearInterval(typingInterval); // Cleanup the interval when component unmounts
-  }, [typingText, currentWordIndex]);
+    return () => clearInterval(typingInterval);
+  }, [typingText, currentWordIndex, typingTexts]); // Ensured typingTexts is in dependencies
 
   return (
     <section className={styles1.heroSection}>
@@ -31,7 +29,7 @@ const Herosection = () => {
         <div className={styles1.heroLeftColumn}>
           <div className={styles1.subheading}>Hello!</div>
           <h1 className={styles1.heroHeading}>
-            I'm <span className={styles1.heroHeadingSpan}>Syed Muhammad Afif</span>
+            I&apos;m <span className={styles1.heroHeadingSpan}>Syed Muhammad Afif</span> {/* Apostrophe escaped */}
           </h1>
           <span id="typing-animation" className={styles1.typingText}>
             {typingText}
@@ -43,7 +41,7 @@ const Herosection = () => {
             <button
               className={styles1.heroButton}
               onClick={() => {
-                const element = document.getElementById("project-section");
+                const element = document.getElementById('project-section');
                 if (element) {
                   element.scrollIntoView({
                     behavior: 'smooth',
